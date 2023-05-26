@@ -4,7 +4,7 @@ import retrofit2.Response
 
 interface LastFMService {
 
-    fun getArtist(artistName : String): LastFMArtistData?
+    fun getArtistData(artistName : String): LastFMArtistData?
 
 }
 
@@ -13,7 +13,7 @@ internal class LastFMServiceImpl(
     private val lastFMToArtistDataResolver: LastFMToArtistDataResolver
 ) : LastFMService {
 
-    override fun getArtist(artistName: String): LastFMArtistData? {
+    override fun getArtistData(artistName: String): LastFMArtistData? {
         val callResponse = getArtistFromAPI(artistName)
         return lastFMToArtistDataResolver.getArtistFromExternalData(callResponse.body())
     }
